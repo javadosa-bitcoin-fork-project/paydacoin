@@ -211,7 +211,7 @@ class InvalidMessagesTest(PaydacoinTestFramework):
         self.test_addrv2('unrecognized network',
             [
                 'received: addrv2 (25 bytes)',
-                '9.9.9.9:8333 mapped',
+                '9.9.9.9:7333 mapped',
                 'Added 1 addresses',
             ],
             bytes.fromhex(

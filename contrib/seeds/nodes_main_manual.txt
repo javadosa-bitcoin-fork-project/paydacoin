@@ -1,16 +1,16 @@
 
 # manually updated 2022-08 for minimal torv3 bootstrap support
-5g72ppm3krkorsfopcm2bi7wlv4ohhs4u4mlseymasn7g7zhdcyjpfid.onion:8333
-b64xcbleqmwgq2u46bh4hegnlrzzvxntyzbmucn3zt7cssm7y4ubv3id.onion:8333
-fjdyxicpm4o42xmedlwl3uvk5gmqdfs5j37wir52327vncjzvtpfv7yd.onion:8333
-fpz6r5ppsakkwypjcglz6gcnwt7ytfhxskkfhzu62tnylcknh3eq6pad.onion:8333
-gxo5anvfnffnftfy5frkgvplq3rpga2ie3tcblo2vl754fvnhgorn5yd.onion:8333
-ifdu5qvbofrt4ekui2iyb3kbcyzcsglazhx2hn4wfskkrx2v24qxriid.onion:8333
-itz3oxsihs62muvknc237xabl5f6w6rfznfhbpayrslv2j2ubels47yd.onion:8333
-kpgvmscirrdqpekbqjsvw5teanhatztpp2gl6eee4zkowvwfxwenqaid.onion:8333
-m7cbpjolo662uel7rpaid46as2otcj44vvwg3gccodnvaeuwbm3anbyd.onion:8333
-mwmfluek4au6mxxpw6fy7sjhkm65bdfc7izc7lpz3trewfdghyrzsbid.onion:8333
-rp7k2go3s5lyj3fnj6zn62ktarlrsft2ohlsxkyd7v3e3idqyptvread.onion:8333
+5g72ppm3krkorsfopcm2bi7wlv4ohhs4u4mlseymasn7g7zhdcyjpfid.onion:7333
+b64xcbleqmwgq2u46bh4hegnlrzzvxntyzbmucn3zt7cssm7y4ubv3id.onion:7333
+fjdyxicpm4o42xmedlwl3uvk5gmqdfs5j37wir52327vncjzvtpfv7yd.onion:7333
+fpz6r5ppsakkwypjcglz6gcnwt7ytfhxskkfhzu62tnylcknh3eq6pad.onion:7333
+gxo5anvfnffnftfy5frkgvplq3rpga2ie3tcblo2vl754fvnhgorn5yd.onion:7333
+ifdu5qvbofrt4ekui2iyb3kbcyzcsglazhx2hn4wfskkrx2v24qxriid.onion:7333
+itz3oxsihs62muvknc237xabl5f6w6rfznfhbpayrslv2j2ubels47yd.onion:7333
+kpgvmscirrdqpekbqjsvw5teanhatztpp2gl6eee4zkowvwfxwenqaid.onion:7333
+m7cbpjolo662uel7rpaid46as2otcj44vvwg3gccodnvaeuwbm3anbyd.onion:7333
+mwmfluek4au6mxxpw6fy7sjhkm65bdfc7izc7lpz3trewfdghyrzsbid.onion:7333
+rp7k2go3s5lyj3fnj6zn62ktarlrsft2ohlsxkyd7v3e3idqyptvread.onion:7333
 
 # manually updated 2022-08 for minimal i2p bootstrap support
 255fhcp6ajvftnyo7bwz3an3t4a4brhopm3bamyh2iu5r3gnr2rq.b32.i2p:0
@@ -74,5 +74,5 @@ zsxwyo6qcn3chqzwxnseusqgsnuw3maqnztkiypyfxtya4snkoka.b32.i2p:0
 zysrlpii5ftrzivfcyhdrwpeyyqddbrdefnfu5q6otk5gtugmh2a.b32.i2p:0
 
 # manually added 2022-01 for minimal cjdns bootstrap support
-[fc32:17ea:e415:c3bf:9808:149d:b5a2:c9aa]:8333
-[fcc7:be49:ccd1:dc91:3125:f0da:457d:8ce]:8333
+[fc32:17ea:e415:c3bf:9808:149d:b5a2:c9aa]:7333
+[fcc7:be49:ccd1:dc91:3125:f0da:457d:8ce]:7333

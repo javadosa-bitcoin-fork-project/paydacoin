@@ -105,7 +105,7 @@ public:
         pchMessageStart[1] = 0xbe;
         pchMessageStart[2] = 0xb4;
         pchMessageStart[3] = 0xd9;
-        nDefaultPort = 8333;
+        nDefaultPort = 7333;
         nPruneAfterHeight = 100000;
         m_assumed_blockchain_size = 496;
         m_assumed_chain_state_size = 6;
@@ -220,7 +220,7 @@ public:
         pchMessageStart[1] = 0x11;
         pchMessageStart[2] = 0x09;
         pchMessageStart[3] = 0x07;
-        nDefaultPort = 18333;
+        nDefaultPort = 17333;
         nPruneAfterHeight = 1000;
         m_assumed_blockchain_size = 42;
         m_assumed_chain_state_size = 2;
@@ -287,7 +287,7 @@ public:
 
             // Hardcoded nodes can be removed once there are more DNS seeds
             vSeeds.emplace_back("178.128.221.177");
-            vSeeds.emplace_back("v7ajjeirttkbnt32wpy3c6w3emwnfr3fkla7hpxcfokr3ysd3kqtzmqd.onion:38333");
+            vSeeds.emplace_back("v7ajjeirttkbnt32wpy3c6w3emwnfr3fkla7hpxcfokr3ysd3kqtzmqd.onion:37333");
 
             consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000000001291fc22898");
             consensus.defaultAssumeValid = uint256S("0x000000d1a0e224fa4679d2fb2187ba55431c284fa1b74cbc8cfda866fd4d2c09"); // 105495
@@ -357,7 +357,7 @@ public:
         uint256 hash = h.GetHash();
         memcpy(pchMessageStart, hash.begin(), 4);
 
-        nDefaultPort = 38333;
+        nDefaultPort = 37333;
         nPruneAfterHeight = 1000;
 
         genesis = CreateGenesisBlock(1598918400, 52613770, 0x1e0377ae, 1, 50 * COIN);
