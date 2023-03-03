@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[o:bitcoin:p:bitcoin:r:qt-translation-025x]
-file_filter = src/qt/locale/bitcoin_<lang>.xlf
-source_file = src/qt/locale/bitcoin_en.xlf
+[o:paydacoin:p:paydacoin:r:qt-translation-025x]
+file_filter = src/qt/locale/paydacoin_<lang>.xlf
+source_file = src/qt/locale/paydacoin_en.xlf
 source_lang = en

@@ -1,0 +1,33 @@
+# /etc/conf.d/paydacoind: config file for /etc/init.d/paydacoind
+
+# Config file location
+#PAYDACOIND_CONFIGFILE="/etc/paydacoin/paydacoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $PAYDACOIND_USER)
+#PAYDACOIND_PIDDIR="/var/run/paydacoind"
+
+# What filename to give the pidfile
+#PAYDACOIND_PIDFILE="${PAYDACOIND_PIDDIR}/paydacoind.pid"
+
+# Where to write paydacoind data (be mindful that the blockchain is large)
+#PAYDACOIND_DATADIR="/var/lib/paydacoind"
+
+# User and group to own paydacoind process
+#PAYDACOIND_USER="paydacoin"
+#PAYDACOIND_GROUP="paydacoin"
+
+# Path to paydacoind executable
+#PAYDACOIND_BIN="/usr/bin/paydacoind"
+
+# Nice value to run paydacoind under
+#PAYDACOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#PAYDACOIND_OPTS=""
+
+# The timeout in seconds OpenRC will wait for paydacoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+PAYDACOIND_SIGTERM_TIMEOUT=600

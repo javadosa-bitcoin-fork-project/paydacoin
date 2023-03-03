@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2022 The Bitcoin Core developers
+// Copyright (c) 2017-2022 The Paydacoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_RPC_UTIL_H
-#define BITCOIN_RPC_UTIL_H
+#ifndef PAYDACOIN_RPC_UTIL_H
+#define PAYDACOIN_RPC_UTIL_H
 
 #include <node/transaction.h>
 #include <outputtype.h>
@@ -381,4 +381,4 @@ private:
     const RPCExamples m_examples;
 };
 
-#endif // BITCOIN_RPC_UTIL_H
+#endif // PAYDACOIN_RPC_UTIL_H

@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2022 The Bitcoin Core developers
+// Copyright (c) 2017-2022 The Paydacoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_FS_H
-#define BITCOIN_FS_H
+#ifndef PAYDACOIN_FS_H
+#define PAYDACOIN_FS_H
 
 #include <tinyformat.h>
 
@@ -248,4 +248,4 @@ template<> inline void formatValue(std::ostream&, const char*, const char*, int,
 template<> inline void formatValue(std::ostream&, const char*, const char*, int, const fs::path&) = delete;
 } // namespace tinyformat
 
-#endif // BITCOIN_FS_H
+#endif // PAYDACOIN_FS_H

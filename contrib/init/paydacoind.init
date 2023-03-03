@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+#
+#  paydacoind The paydacoin core server.
+#
+#
+# chkconfig: 345 80 20
+# description: paydacoind
+# processname: paydacoind
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/paydacoind, see below
+if [ -f /etc/sysconfig/paydacoind ]; then
+        . /etc/sysconfig/paydacoind
+fi
+
+RETVAL=0
+
+prog=paydacoind
+# you can override the lockfile via PAYDACOIND_LOCKFILE in /etc/sysconfig/paydacoind
+lockfile=${PAYDACOIND_LOCKFILE-/var/lock/subsys/paydacoind}
+
+# paydacoind defaults to /usr/bin/paydacoind, override with PAYDACOIND_BIN
+paydacoind=${PAYDACOIND_BIN-/usr/bin/paydacoind}
+
+# paydacoind opts default to -disablewallet, override with PAYDACOIND_OPTS
+paydacoind_opts=${PAYDACOIND_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $paydacoind $paydacoind_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog -t600
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

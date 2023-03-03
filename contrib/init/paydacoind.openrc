@@ -1,0 +1,93 @@
+#!/sbin/openrc-run
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/paydacoin/.paydacoin" ]; then
+	PAYDACOIND_DEFAULT_DATADIR="/var/lib/paydacoin/.paydacoin"
+else
+	PAYDACOIND_DEFAULT_DATADIR="/var/lib/paydacoind"
+fi
+
+PAYDACOIND_CONFIGFILE=${PAYDACOIND_CONFIGFILE:-/etc/paydacoin/paydacoin.conf}
+PAYDACOIND_PIDDIR=${PAYDACOIND_PIDDIR:-/var/run/paydacoind}
+PAYDACOIND_PIDFILE=${PAYDACOIND_PIDFILE:-${PAYDACOIND_PIDDIR}/paydacoind.pid}
+PAYDACOIND_DATADIR=${PAYDACOIND_DATADIR:-${PAYDACOIND_DEFAULT_DATADIR}}
+PAYDACOIND_USER=${PAYDACOIND_USER:-${PAYDACOIN_USER:-paydacoin}}
+PAYDACOIND_GROUP=${PAYDACOIND_GROUP:-paydacoin}
+PAYDACOIND_BIN=${PAYDACOIND_BIN:-/usr/bin/paydacoind}
+PAYDACOIND_NICE=${PAYDACOIND_NICE:-${NICELEVEL:-0}}
+PAYDACOIND_OPTS="${PAYDACOIND_OPTS:-${PAYDACOIN_OPTS}}"
+
+name="Paydacoin Core Daemon"
+description="Paydacoin cryptocurrency P2P network daemon"
+
+command="/usr/bin/paydacoind"
+command_args="-pid=\"${PAYDACOIND_PIDFILE}\" \
+		-conf=\"${PAYDACOIND_CONFIGFILE}\" \
+		-datadir=\"${PAYDACOIND_DATADIR}\" \
+		-daemon \
+		${PAYDACOIND_OPTS}"
+
+required_files="${PAYDACOIND_CONFIGFILE}"
+start_stop_daemon_args="-u ${PAYDACOIND_USER} \
+			-N ${PAYDACOIND_NICE} -w 2000"
+pidfile="${PAYDACOIND_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${PAYDACOIND_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${PAYDACOIND_USER}:${PAYDACOIND_GROUP}" \
+	"${PAYDACOIND_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${PAYDACOIND_USER}:${PAYDACOIND_GROUP}" \
+	"${PAYDACOIND_PIDDIR}"
+
+	checkpath -f \
+	-o "${PAYDACOIND_USER}:${PAYDACOIND_GROUP}" \
+	-m 0660 \
+	"${PAYDACOIND_CONFIGFILE}"
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if grep -qs '^rpcuser=' "${PAYDACOIND_CONFIGFILE}" && \
+		! grep -qs '^rpcpassword=' "${PAYDACOIND_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run paydacoind."
+		eerror "The setting must appear in ${PAYDACOIND_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following "
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Paydacoin Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}

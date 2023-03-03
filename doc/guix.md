@@ -1,3 +1,3 @@
-# Bootstrappable Bitcoin Core Builds
+# Bootstrappable Paydacoin Core Builds
 
 See [contrib/guix/README.md](../contrib/guix/README.md)

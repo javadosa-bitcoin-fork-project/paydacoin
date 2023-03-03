@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2022 The Bitcoin Core developers
+// Copyright (c) 2017-2022 The Paydacoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -532,12 +532,12 @@ BOOST_AUTO_TEST_CASE(knapsack_solver_test)
         add_coin(available_coins, *wallet,  4*COIN); // now we have 5+6+7+8+18+20+30+100+200+300+400 = 1094 cents
         const auto result14 = KnapsackSolver(KnapsackGroupOutputs(available_coins.All(), *wallet, filter_confirmed), 95 * CENT, CENT);
         BOOST_CHECK(result14);
-        BOOST_CHECK_EQUAL(result14->GetSelectedValue(), 1 * COIN);  // we should get 1 BTC in 1 coin
+        BOOST_CHECK_EQUAL(result14->GetSelectedValue(), 1 * COIN);  // we should get 1 PDC in 1 coin
         BOOST_CHECK_EQUAL(result14->GetInputSet().size(), 1U);
 
         const auto result15 = KnapsackSolver(KnapsackGroupOutputs(available_coins.All(), *wallet, filter_confirmed), 195 * CENT, CENT);
         BOOST_CHECK(result15);
-        BOOST_CHECK_EQUAL(result15->GetSelectedValue(), 2 * COIN);  // we should get 2 BTC in 1 coin
+        BOOST_CHECK_EQUAL(result15->GetSelectedValue(), 2 * COIN);  // we should get 2 PDC in 1 coin
         BOOST_CHECK_EQUAL(result15->GetInputSet().size(), 1U);
 
         // empty the wallet and start again, now with fractions of a cent, to test small change avoidance
@@ -968,9 +968,9 @@ BOOST_AUTO_TEST_CASE(check_max_weight)
 
     {
         // Scenario 1:
-        // The actor starts with 1x 50.0 BTC and 1515x 0.033 BTC (~100.0 BTC total) unspent outputs
-        // Then tries to spend 49.5 BTC
-        // The 50.0 BTC output should be selected, because the transaction would otherwise be too large
+        // The actor starts with 1x 50.0 PDC and 1515x 0.033 PDC (~100.0 PDC total) unspent outputs
+        // Then tries to spend 49.5 PDC
+        // The 50.0 PDC output should be selected, because the transaction would otherwise be too large
 
         // Perform selection
 
@@ -993,8 +993,8 @@ BOOST_AUTO_TEST_CASE(check_max_weight)
     {
         // Scenario 2:
 
-        // The actor starts with 400x 0.0625 BTC and 2000x 0.025 BTC (75.0 BTC total) unspent outputs
-        // Then tries to spend 49.5 BTC
+        // The actor starts with 400x 0.0625 PDC and 2000x 0.025 PDC (75.0 PDC total) unspent outputs
+        // Then tries to spend 49.5 PDC
         // A combination of coins should be selected, such that the created transaction is not too large
 
         // Perform selection
@@ -1018,7 +1018,7 @@ BOOST_AUTO_TEST_CASE(check_max_weight)
     {
         // Scenario 3:
 
-        // The actor starts with 1515x 0.033 BTC (49.995 BTC total) unspent outputs
+        // The actor starts with 1515x 0.033 PDC (49.995 PDC total) unspent outputs
         // No results should be returned, because the transaction would be too large
 
         // Perform selection
@@ -1059,10 +1059,10 @@ BOOST_AUTO_TEST_CASE(SelectCoins_effective_value_test)
         dummyWallet->SetWalletFlag(WALLET_FLAG_DESCRIPTORS);
         dummyWallet->SetupDescriptorScriptPubKeyMans();
 
-        add_coin(available_coins, *dummyWallet, 100000); // 0.001 BTC
+        add_coin(available_coins, *dummyWallet, 100000); // 0.001 PDC
     }
 
-    CAmount target{99900}; // 0.000999 BTC
+    CAmount target{99900}; // 0.000999 PDC
 
     FastRandomContext rand;
     CoinSelectionParams cs_params{
