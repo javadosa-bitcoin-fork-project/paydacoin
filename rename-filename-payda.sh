@@ -1,2 +1,3 @@
-find . -exec rename 's/paydacoin/paydacoin/' {} ";"
-find . -exec rename 's/pdc/pdc/' {} ";"
+#!/bin/sh
+find . -exec rename 's/bitcoin/paydacoin/' {} ";"
+find . -exec rename 's/btc/pdc/' {} ";"
